@@ -23,6 +23,5 @@ android {
 dependencies {
     compile project(':mvp')
     compile project(':mvp-common')
-    compile project(':testmodule')
     compile project(':viewstate')
 }

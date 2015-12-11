@@ -11,12 +11,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-          </set>
-        </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/mvp" />
+            <option value="$PROJECT_DIR$/mvp-common" />
+            <option value="$PROJECT_DIR$/testing" />
+            <option value="$PROJECT_DIR$/viewstate" />
           </set>
         </option>
       </GradleProjectSettings>

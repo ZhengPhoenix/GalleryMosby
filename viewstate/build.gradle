@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply from: '../maven-push.gradle'
+//apply from: '../maven-push.gradle'
 apply from: '../findbugs.gradle'
 
 android {
@@ -14,8 +14,8 @@ android {
   defaultConfig {
     minSdkVersion rootProject.ext.minSdk
     targetSdkVersion rootProject.ext.targetSdk
-    versionName project.VERSION_NAME
-    versionCode Integer.parseInt(project.VERSION_CODE)
+    versionName "1.0"
+    versionCode 1 //Integer.parseInt(project.VERSION_CODE)
   }
   buildTypes {
     release {

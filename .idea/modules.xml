@@ -4,6 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GalleryMosby.iml" filepath="$PROJECT_DIR$/GalleryMosby.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mvp/mvp.iml" filepath="$PROJECT_DIR$/mvp/mvp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mvp-common/mvp-common.iml" filepath="$PROJECT_DIR$/mvp-common/mvp-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testing/testing.iml" filepath="$PROJECT_DIR$/testing/testing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/viewstate/viewstate.iml" filepath="$PROJECT_DIR$/viewstate/viewstate.iml" />
     </modules>
   </component>
 </project>

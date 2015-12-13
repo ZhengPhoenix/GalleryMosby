@@ -28,6 +28,11 @@ android {
     targetCompatibility rootProject.ext.javaTargetCompatibility
   }
 
+    subprojects {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
   /*
   testOptions {
     unitTests.returnDefaultValues = true
@@ -37,7 +42,7 @@ android {
 
 dependencies {
 
-  compile 'com.android.support:appcompat-v7:' + rootProject.ext.appcompat7Version
+  compile 'com.android.support:appcompat-v7:23.1.1'
 
   compile project(':mvp-common')
 

@@ -1,6 +1,14 @@
+import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile
+
 apply plugin: 'java'
 //apply from: '../maven-push-java-lib.gradle'
 apply plugin: 'findbugs'
+
+subprojects {
+  tasks.withType(JavaCompile) {
+    options.compilerArgs << "-Xlint:unchecked"
+  }
+}
 
 sourceCompatibility = rootProject.ext.javaSourceCompatibility
 targetCompatibility = rootProject.ext.javaTargetCompatibility

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "23.0.0"
+    buildToolsVersion "23.0.1"
     defaultConfig {
         applicationId "com.gallery.phoenix.gallerymosby"
         minSdkVersion 15
@@ -20,8 +20,10 @@ android {
     }
 }
 
+
 dependencies {
-    compile project(':mvp')
+    compile 'com.android.support:appcompat-v7:23.1.1'
     compile project(':mvp-common')
     compile project(':viewstate')
+    compile project(':mvp')
 }

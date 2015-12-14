@@ -16,21 +16,21 @@ buildscript {
 allprojects {
     repositories {
 //        jcenter()
-//        jcenter {
-//            url "http://jcenter.bintray.com/"
+        jcenter {
+            url "http://jcenter.bintray.com/"
+        }
+//        maven{ url 'http://maven.oschina.net/content/groups/public/'}
+//        maven {
+//            url 'http://oss.sonatype.org/content/repositories/snapshots/'
 //        }
-        maven{ url 'http://maven.oschina.net/content/groups/public/'}
-        maven {
-            url 'http://oss.sonatype.org/content/repositories/snapshots/'
-        }
-
-        maven {
-            url "https://jitpack.io"
-        }
-
-        maven {
-            url 'http://clojars.org/repo/'
-        }
+//
+//        maven {
+//            url "https://jitpack.io"
+//        }
+//
+//        maven {
+//            url 'http://clojars.org/repo/'
+//        }
     }
 
 }
@@ -39,7 +39,7 @@ allprojects {
 ext {
     minSdk = 15
     targetSdk = 23
-    buildToolsVersion = '23.0.1'
+    buildToolsVersion = '23.0.0'
     compileSdkVersion = 23
 
     javaSourceCompatibility = JavaVersion.VERSION_1_7

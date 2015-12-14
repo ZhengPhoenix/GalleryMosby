@@ -22,8 +22,10 @@ android {
 
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:23.1.1'
     compile project(':mvp-common')
     compile project(':viewstate')
     compile project(':mvp')
+    compile 'com.jakewharton:butterknife:'+rootProject.ext.butterknifeVersion
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:support-v4:23.1.1'
 }

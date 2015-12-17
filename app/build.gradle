@@ -22,6 +22,7 @@ android {
 
 
 dependencies {
+    compile('de.greenrobot:greendao:2.0.0')
     compile project(':mvp-common')
     compile project(':viewstate')
     compile project(':mvp')

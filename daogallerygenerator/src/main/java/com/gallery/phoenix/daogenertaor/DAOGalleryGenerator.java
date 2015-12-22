@@ -17,15 +17,28 @@ public class DAOGalleryGenerator {
 
         Schema schema = new Schema(1, "com.gallery.phoenix.daogallery");
 
-        addPicUri(schema);
+        addAlbumEntity(schema);
+        addPicEntity(schema);
 
         (new DaoGenerator()).generateAll(schema, "daogallery/src/main/java");
     }
 
-    private static void addPicUri(Schema schema) {
+    private static void addPicEntity(Schema schema) {
         Entity entity = schema.addEntity("PIC");
 
         entity.addIdProperty();
-        entity.addStringProperty("Uri").notNull();
+        entity.addIntProperty("album_id").notNull();
+        entity.addStringProperty("date");
+        entity.addIntProperty("gallery_id");
+    }
+
+    private static void addAlbumEntity(Schema schema) {
+        Entity entity = schema.addEntity("ALBUM");
+
+        entity.addIdProperty();
+
+        entity.addStringProperty("CreatedDate").notNull();
+        entity.addStringProperty("UpdateDate");
+        entity.addStringProperty("Name").notNull();
     }
 }

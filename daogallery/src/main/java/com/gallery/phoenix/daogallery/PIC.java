@@ -7,8 +7,9 @@ package com.gallery.phoenix.daogallery;
 public class PIC {
 
     private Long id;
-    /** Not-null value. */
-    private String Uri;
+    private int album_id;
+    private String date;
+    private Integer gallery_id;
 
     public PIC() {
     }
@@ -17,9 +18,11 @@ public class PIC {
         this.id = id;
     }
 
-    public PIC(Long id, String Uri) {
+    public PIC(Long id, int album_id, String date, Integer gallery_id) {
         this.id = id;
-        this.Uri = Uri;
+        this.album_id = album_id;
+        this.date = date;
+        this.gallery_id = gallery_id;
     }
 
     public Long getId() {
@@ -30,14 +33,28 @@ public class PIC {
         this.id = id;
     }
 
-    /** Not-null value. */
-    public String getUri() {
-        return Uri;
+    public int getAlbum_id() {
+        return album_id;
     }
 
-    /** Not-null value; ensure this value is available before it is saved to the database. */
-    public void setUri(String Uri) {
-        this.Uri = Uri;
+    public void setAlbum_id(int album_id) {
+        this.album_id = album_id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Integer getGallery_id() {
+        return gallery_id;
+    }
+
+    public void setGallery_id(Integer gallery_id) {
+        this.gallery_id = gallery_id;
     }
 
 }

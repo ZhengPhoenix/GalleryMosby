@@ -21,15 +21,15 @@ public class MainActivity extends MvpActivity<MvpTestView, MvpTestPresenter>
         implements MvpTestView{
 
 
-    @Bind(R.id.changeA)
-    Button changeA;
-    @Bind(R.id.changeB)
-    Button changeB;
-
-    @Bind(R.id.showA)
-    TextView showA;
-    @Bind(R.id.showB)
-    TextView showB;
+//    @Bind(R.id.changeA)
+//    Button changeA;
+//    @Bind(R.id.changeB)
+//    Button changeB;
+//
+//    @Bind(R.id.showA)
+//    TextView showA;
+//    @Bind(R.id.showB)
+//    TextView showB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,21 +47,21 @@ public class MainActivity extends MvpActivity<MvpTestView, MvpTestPresenter>
 
     @Override
     public void changeA() {
-        showB.setVisibility(View.GONE);
-        showA.setVisibility(View.VISIBLE);
+//        showB.setVisibility(View.GONE);
+//        showA.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void changeB() {
-        showA.setVisibility(View.GONE);
-        showB.setVisibility(View.VISIBLE);
+//        showA.setVisibility(View.GONE);
+//        showB.setVisibility(View.VISIBLE);
     }
 
-    @OnClick(R.id.changeA) public void onChangeAClick() {
-        getPresenter().doA();
-    }
-
-    @OnClick(R.id.changeB) public void onChangeBClick() {
-        getPresenter().doB();
-    }
+//    @OnClick(R.id.changeA) public void onChangeAClick() {
+//        getPresenter().doA();
+//    }
+//
+//    @OnClick(R.id.changeB) public void onChangeBClick() {
+//        getPresenter().doB();
+//    }
 }

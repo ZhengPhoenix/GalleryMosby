@@ -29,6 +29,5 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="DaoCore" exported="" />
     <orderEntry type="module" module-name="DaoGenerator" exported="" />
-    <orderEntry type="library" exported="" name="daogallerygenerator.daogallerygenerator" level="project" />
   </component>
 </module>

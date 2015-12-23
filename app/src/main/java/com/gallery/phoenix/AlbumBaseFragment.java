@@ -88,6 +88,7 @@ public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayLi
         mLayoutManager = new LinearLayoutManager(getContext());
 
         mAdapter = new AlbumBaseAdapter(getContext(), mData);
+        mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         loadData(false);
     }
@@ -96,13 +97,6 @@ public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayLi
     public void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -139,7 +133,7 @@ public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayLi
 
     @Override
     public void showLoading(boolean pullToRefresh) {
-
+        super.showLoading(pullToRefresh);
     }
 
     @Override

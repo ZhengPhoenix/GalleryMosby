@@ -10,7 +10,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/DaoCore" />
+            <option value="$PROJECT_DIR$/DaoGenerator" />
+            <option value="$PROJECT_DIR$/DaoTest" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/daogallery" />
+            <option value="$PROJECT_DIR$/daogallerygenerator" />
             <option value="$PROJECT_DIR$/mvp" />
             <option value="$PROJECT_DIR$/mvp-common" />
             <option value="$PROJECT_DIR$/testing" />
@@ -20,7 +25,12 @@
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/DaoCore" />
+            <option value="$PROJECT_DIR$/DaoGenerator" />
+            <option value="$PROJECT_DIR$/DaoTest" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/daogallery" />
+            <option value="$PROJECT_DIR$/daogallerygenerator" />
             <option value="$PROJECT_DIR$/mvp" />
             <option value="$PROJECT_DIR$/mvp-common" />
             <option value="$PROJECT_DIR$/testing" />

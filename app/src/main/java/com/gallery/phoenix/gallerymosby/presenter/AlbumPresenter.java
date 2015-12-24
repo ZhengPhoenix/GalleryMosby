@@ -19,7 +19,7 @@ public class AlbumPresenter extends MvpBasePresenter<AlbumLCEView>{
     //this method should be called at the very beginning
     public void initiatePresenter(){
         getView().showLoading(false);
-        int count = 10;
+        int count = 40;
         for(int i = 0;i < count; i ++) {
             mData.add(i, "test");
         }

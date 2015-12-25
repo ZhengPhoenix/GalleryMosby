@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/tools"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
-    android:layout_width="70dp"
-    android:layout_height="70dp"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
     android:layout_gravity="center"
-    app:cardCornorRadius="5dp"
-    app:cardElevation="10dp"
-    app:cardBackgroundColor="@android:color/blue">
+    android:layout_margin="7dp"
+    android:layout_marginBottom="10dp"
+    card_view:cardBackgroundColor="#F3E5F5"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="5dp">
 
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <ImageView
             android:id="@+id/card_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
 
         <TextView
             android:id="@+id/card_name"
-            android:layout_below="@+id/card_image"
+            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="card view"
             android:textSize="10dp"/>
-        </RelativeLayout>
+    </FrameLayout>
 </android.support.v7.widget.CardView>
+
+
 

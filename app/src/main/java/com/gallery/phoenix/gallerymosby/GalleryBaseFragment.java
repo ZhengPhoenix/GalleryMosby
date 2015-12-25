@@ -1,4 +1,4 @@
-package com.gallery.phoenix;
+package com.gallery.phoenix.gallerymosby;
 
 import android.content.Context;
 import android.net.Uri;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -13,10 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gallery.phoenix.gallerymosby.R;
-import com.gallery.phoenix.gallerymosby.presenter.AlbumPresenter;
-import com.gallery.phoenix.gallerymosby.view.AlbumLCEView;
-import com.hannesdorfmann.mosby.mvp.MvpPresenter;
+import com.gallery.phoenix.gallerymosby.presenter.GalleryPresenter;
+import com.gallery.phoenix.gallerymosby.view.GalleryLCEView;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceFragment;
 
 import java.util.ArrayList;
@@ -24,58 +23,33 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AlbumBaseFragment.OnFragmentInteractionListener} interface
+ * {@link GalleryBaseFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AlbumBaseFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
-public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayList<String>, AlbumLCEView, AlbumPresenter> implements AlbumLCEView{
+public class GalleryBaseFragment extends MvpLceFragment<SwipeRefreshLayout, ArrayList<String>, GalleryLCEView, GalleryPresenter> implements GalleryLCEView{
 
     @Bind(R.id.recyclerView)
     RecyclerView mRecyclerView;
-    RecyclerView.LayoutManager mLayoutManager;
+    GalleryBaseAdapter mAdapter;
 
-    private AlbumBaseAdapter mAdapter;
-    private ArrayList<String> mData;
+    private ArrayList<String> mData = new ArrayList<String>();
 
     private OnFragmentInteractionListener mListener;
 
-    public AlbumBaseFragment() {
+    public GalleryBaseFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AlbumBaseFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AlbumBaseFragment newInstance(String param1, String param2) {
-        AlbumBaseFragment fragment = new AlbumBaseFragment();
-        Bundle args = new Bundle();
-
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_album_base, container, false);
+        View view = inflater.inflate(R.layout.fragment_gallery_base, container, false);
         ButterKnife.bind(this, view);
 
         return view;
@@ -84,19 +58,16 @@ public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayLi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mAdapter = new GalleryBaseAdapter(getContext(), mData);
 
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(getContext());
-
-        mAdapter = new AlbumBaseAdapter(getContext(), mData);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         mRecyclerView.setAdapter(mAdapter);
         loadData(false);
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         ButterKnife.unbind(this);
     }
 
@@ -118,18 +89,8 @@ public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayLi
     }
 
     @Override
-    public void updateAlbumProperty() {
-
-    }
-
-    @Override
     protected String getErrorMessage(Throwable e, boolean pullToRefresh) {
-        return new String("this is a test");
-    }
-
-    @Override
-    public AlbumPresenter createPresenter() {
-        return new AlbumPresenter();
+        return null;
     }
 
     @Override
@@ -143,20 +104,26 @@ public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayLi
     }
 
     @Override
-    public void showError(Throwable e, boolean pullToRefresh) {
+    public GalleryPresenter createPresenter() {
+        return new GalleryPresenter();
     }
 
     @Override
     public void setData(ArrayList<String> data) {
         mData = data;
-        mAdapter.setmDataSet(mData);
+        mAdapter.setmData(mData);
         mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void loadData(boolean pullToRefresh) {
         getPresenter().initiatePresenter();
-        getPresenter().loadAlbumCover();
+        getPresenter().loadGalleryPhoto();
+    }
+
+    @Override
+    public void updateGalleryPhoto() {
+
     }
 
     /**

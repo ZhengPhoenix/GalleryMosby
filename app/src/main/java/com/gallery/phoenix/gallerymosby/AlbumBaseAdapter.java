@@ -1,16 +1,13 @@
-package com.gallery.phoenix;
+package com.gallery.phoenix.gallerymosby;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.gallery.phoenix.gallerymosby.R;
 
 import java.util.ArrayList;
 

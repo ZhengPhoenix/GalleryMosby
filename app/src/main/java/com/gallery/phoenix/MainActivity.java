@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements AlbumBaseFragment
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(android.R.id.content, mGalleryFragment);
             transaction.addToBackStack(null);
-            transaction.commit();c
+            transaction.commit();
         }
     }
 }

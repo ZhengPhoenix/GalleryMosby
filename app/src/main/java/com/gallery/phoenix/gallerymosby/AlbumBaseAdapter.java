@@ -19,10 +19,18 @@ public class AlbumBaseAdapter extends RecyclerView.Adapter<AlbumBaseAdapter.View
     private Context mContext;
     private ArrayList<String> mDataSet;
 
+    private OnItemClickListener mListener;
+
     public AlbumBaseAdapter(Context context, @Nullable ArrayList<String> attrs) {
 
         mContext = context;
         mDataSet = attrs;
+    }
+
+    public interface OnItemClickListener {
+
+        void onItemClick(View v, int position);
+        void onItemLongClick(View v, int position);
     }
 
     @Override
@@ -36,8 +44,17 @@ public class AlbumBaseAdapter extends RecyclerView.Adapter<AlbumBaseAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.imageView.setImageResource(R.drawable.ic_cloud_off);
+
+        if(mListener != null) {
+            holder.imageView.setOnClickListener(new ImageView.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    mListener.onItemClick(holder.imageView, position);
+                }
+            });
+        }
 
     }
 
@@ -63,5 +80,9 @@ public class AlbumBaseAdapter extends RecyclerView.Adapter<AlbumBaseAdapter.View
 
     public void setmDataSet(ArrayList<String> mDataSet) {
         this.mDataSet = mDataSet;
+    }
+
+    public void setmListener(OnItemClickListener mListener) {
+        this.mListener = mListener;
     }
 }

@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.gallery.phoenix.gallerymosby.presenter.AlbumPresenter;
 import com.gallery.phoenix.gallerymosby.view.AlbumLCEView;
@@ -30,7 +30,12 @@ import butterknife.ButterKnife;
  * Use the {@link AlbumBaseFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayList<String>, AlbumLCEView, AlbumPresenter> implements AlbumLCEView{
+public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayList<String>, AlbumLCEView, AlbumPresenter> implements AlbumLCEView, AlbumBaseAdapter.OnItemClickListener{
+
+    private static final String TAG = "AlbumBaseFragment";
+
+    public static final String ALBUM_CLICK = "ALBUM_CLICK";
+    public static final String ALBUM_LONG_CLICK = "ALBUM_LONG_CLICK";
 
     @Bind(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -39,6 +44,7 @@ public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayLi
     private ArrayList<String> mData;
 
     private OnFragmentInteractionListener mListener;
+    private AlbumBaseFragment.OnFragmentInteractionListener mFragmentListener;
 
     public AlbumBaseFragment() {
         // Required empty public constructor
@@ -84,6 +90,7 @@ public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayLi
 
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new AlbumBaseAdapter(getContext(), mData);
+        mAdapter.setmListener(this);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         mRecyclerView.setAdapter(mAdapter);
         loadData(false);
@@ -99,7 +106,7 @@ public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayLi
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+            mFragmentListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -109,7 +116,7 @@ public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayLi
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        mFragmentListener = null;
     }
 
     @Override
@@ -166,6 +173,21 @@ public class AlbumBaseFragment extends MvpLceFragment<SwipeRefreshLayout,ArrayLi
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(String args);
+    }
+
+    public void setmFragmentListener(OnFragmentInteractionListener mFragmentListener) {
+        this.mFragmentListener = mFragmentListener;
+    }
+
+    @Override
+    public void onItemClick(View v, int position) {
+        Toast.makeText(getContext(), "item " + position + " click", Toast.LENGTH_SHORT).show();
+        mFragmentListener.onFragmentInteraction(ALBUM_CLICK);
+    }
+
+    @Override
+    public void onItemLongClick(View v, int position) {
+
     }
 }

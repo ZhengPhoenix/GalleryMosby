@@ -32,14 +32,20 @@ import butterknife.ButterKnife;
  */
 public class GalleryBaseFragment extends MvpLceFragment<SwipeRefreshLayout, ArrayList<String>, GalleryLCEView, GalleryPresenter> implements GalleryLCEView{
 
+    private static final String TAG = "GalleryBaseFragment";
+
+    public static final String GALLERY_CONTENT = "GALLERY_CONTENT";
+
     @Bind(R.id.recyclerView)
     RecyclerView mRecyclerView;
     GalleryBaseAdapter mAdapter;
 
     private ArrayList<String> mData = new ArrayList<String>();
 
-    private OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener mFragmentListener;
 
+    //TODO: gallery fragment must has initial argument
+    //for display certain album
     public GalleryBaseFragment() {
         // Required empty public constructor
     }
@@ -75,7 +81,7 @@ public class GalleryBaseFragment extends MvpLceFragment<SwipeRefreshLayout, Arra
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+            mFragmentListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -85,7 +91,13 @@ public class GalleryBaseFragment extends MvpLceFragment<SwipeRefreshLayout, Arra
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        mFragmentListener = null;
+    }
+
+    @Override
+    public void onPause() {
+//        mFragmentListener.onFragmentInteraction(GALLERY_CONTENT);
+        super.onPause();
     }
 
     @Override
@@ -138,6 +150,10 @@ public class GalleryBaseFragment extends MvpLceFragment<SwipeRefreshLayout, Arra
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(String args);
+    }
+
+    public void setmFragmentListener(OnFragmentInteractionListener mFragmentListener) {
+        this.mFragmentListener = mFragmentListener;
     }
 }

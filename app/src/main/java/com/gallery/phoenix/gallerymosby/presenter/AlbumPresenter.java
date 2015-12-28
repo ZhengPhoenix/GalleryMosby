@@ -21,7 +21,7 @@ public class AlbumPresenter extends MvpBasePresenter<AlbumLCEView>{
         getView().showLoading(false);
         int count = 40;
         for(int i = 0;i < count; i ++) {
-            mData.add(i, "test");
+            mData.add(i, "test" + i);
         }
         Log.d(TAG, "initiate presenter finished");
     }
